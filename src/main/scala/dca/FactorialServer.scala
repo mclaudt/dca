@@ -31,20 +31,19 @@ object FactorialServer {
       val in = new BufferedSource(socket.getInputStream()).getLines()
       val out = new PrintStream(socket.getOutputStream())
 
-      val request = in.next()
-      println(s"Request: ${request}")
+      if (in.hasNext) {
+        val request = in.next() println(s"Request: ${request}")
 
-      val response = respondToRequest(request)
-      println(s"Responce: ${response}")
+        val response = responseToRequest(request) println(s"Response: ${response}")
 
-      out.println(response)
-      out.flush()
+        out.println(response) out.flush()
+      }
       socket.close()
 
     }
   }
 
-  def respondToRequest(request: String) = {
+  def responseToRequest(request: String) = {
     import Protocol._
     request match {
       case RequestGetFavicon => ResponseOk

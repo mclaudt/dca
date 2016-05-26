@@ -1,6 +1,6 @@
 import dca.Protocol.CorrectRequest.getIntFromRequest
 import dca.Protocol._
-import dca.FactorialServer.respondToRequest
+import dca.FactorialServer.responseToRequest
 import dca.FactorialServer.factorial
 import org.scalatest.{FlatSpec, Matchers}
 
@@ -34,17 +34,17 @@ class FactorialServerSpec extends FlatSpec with Matchers {
 
   "respondToRequest" should "respond to request correctly" in {
 
-    respondToRequest(RequestGetFavicon) should be (ResponseOk)
+    responseToRequest(RequestGetFavicon) should be (ResponseOk)
 
-    respondToRequest("GET /calc?n= HTTP/1.1") should be (ResponseBad)
+    responseToRequest("GET /calc?n= HTTP/1.1") should be (ResponseBad)
 
-    respondToRequest("GET /calc?n=0 HTTP/1.1") should be ("1")
+    responseToRequest("GET /calc?n=0 HTTP/1.1") should be ("1")
 
-    respondToRequest("GET /calc?n=1 HTTP/1.1") should be ("1")
+    responseToRequest("GET /calc?n=1 HTTP/1.1") should be ("1")
 
-    respondToRequest("GET /calc?n=2 HTTP/1.1") should be ("2")
+    responseToRequest("GET /calc?n=2 HTTP/1.1") should be ("2")
 
-    respondToRequest("GET /calc?n=12 HTTP/1.1") should be ("479001600")
+    responseToRequest("GET /calc?n=12 HTTP/1.1") should be ("479001600")
 
   }
 }
