@@ -3,7 +3,7 @@
 .idea
 
 target
-target/*
+project
 
 # sbt specific
 .cache
