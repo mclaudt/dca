@@ -32,12 +32,19 @@ object FactorialServer {
       val out = new PrintStream(socket.getOutputStream())
 
       if (in.hasNext) {
-        val request = in.next() println(s"Request: ${request}")
+        val request = in.next()
 
-        val response = responseToRequest(request) println(s"Response: ${response}")
+        println(s"Request: ${request}")
 
-        out.println(response) out.flush()
+        val response = responseToRequest(request)
+
+        println(s"Response: ${response}")
+
+        out.println(response)
+
+        out.flush()
       }
+      
       socket.close()
 
     }
